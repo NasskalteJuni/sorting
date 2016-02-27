@@ -1,21 +1,20 @@
 import tkinter
+import threading
 
 
 class Gui:
 
-    __framerate = 15
+    __framerate = 1
     __interval = int(1000 / __framerate)
     __window = tkinter.Tk()
     __canvas = None
     __canvas_width = 500
     __canvas_height = 450
     __list = []
+    __animation_queue = None
 
-    def set_list(self, unsorted_list):
-        self.__list = unsorted_list
-
-    def get_list(self):
-        return self.__list
+    def __init__(self):
+        self.create()
 
     def create(self):
         self.__window.title("SortingAlgorithms at work")
@@ -39,23 +38,32 @@ class Gui:
         self.__canvas.update()
 
     def animate(self):
+        if self.__animation_queue is not None and len(self.__animation_queue) > 0:
+            self.__list = self.__animation_queue[0]
+            del self.__animation_queue[0]
+        print(self.__animation_queue)
         self.draw_list()
         self.__window.after(self.__interval, self.animate)
 
-    def run(self):
+    def run(self, queue):
+        self.__animation_queue = queue
         self.animate()
         self.__window.mainloop()
 
-gui = Gui()
-a_list = [1, 4, 3, 5, 7, 2, 8, 9, 6]
-gui.create()
-gui.run()
-gui.set_list(a_list)
-gui.draw_list()
-tmp = a_list[0]
-a_list[0] = a_list[1]
-a_list[1] = a_list[tmp]
-gui.set_list(a_list)
-gui.draw_list()
+
+# def changelist():
+#     gui.set_list(a_list)
+#     gui.draw_list()
+#     tmp = a_list[0]
+#     a_list[0] = a_list[1]
+#     a_list[1] = a_list[tmp]
+#     gui.set_list(a_list)
+#     gui.draw_list()
+#
+#
+# gui = Gui()
+# a_list = [1, 4, 3, 5, 7, 2, 8, 9, 6]
+# gui.create()
+# gui.run()
 
 
