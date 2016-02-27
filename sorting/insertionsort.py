@@ -12,7 +12,6 @@ def insertionsort(unsorted_list) -> list:
             unsorted_list.insert(bisect_left(unsorted_list, current, 0, sorted_last_index), current)
             i += 1
             del unsorted_list[i]
-            print(unsorted_list)
 
         sorted_last_index += 1
 

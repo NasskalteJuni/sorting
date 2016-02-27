@@ -18,7 +18,6 @@ def bubblesort(unsorted_list) -> list:
                 in_order = False
                 __swap(unsorted_list, j, j-1)
         if in_order:
-            print("could leave early after "+str(i)+" round")
             return unsorted_list
 
     return unsorted_list
