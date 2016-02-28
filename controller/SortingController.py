@@ -6,7 +6,8 @@ from sorting.heapsort import heapsort
 from sorting.bogosort import bogosort
 from sorting.gnomesort import gnomesort
 from sorting.insertionsort import insertionsort
-from sorting.mergesort import mergesort
+from sorting.mergesort import iterative_mergesort
+from sorting.shellsort import shellsort
 from observable import observablelist
 
 
@@ -53,6 +54,6 @@ class SortingController:
             self.__gui.draw_list(unsorted_list)
             sleep(self.__sleeptime)
 
-algorithms = [bubblesort, gnomesort, mergesort, heapsort, selectionsort, insertionsort, bogosort]
-sc = SortingController([1, 12, 7, 4, 5, 11, 9, 2, 8, 3, 6, 10], algorithms[6], 0.75)
+algorithms = [bubblesort, gnomesort, shellsort, iterative_mergesort, heapsort, selectionsort, insertionsort, bogosort]
+sc = SortingController([1, 12, 7, 4, 5, 11, 9, 2, 8, 3, 6, 10], algorithms[2], 0.75)
 sc.start()
