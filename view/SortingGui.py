@@ -1,7 +1,7 @@
 import tkinter
 
 
-class Gui:
+class SortingAnimation:
 
     __framerate = 1
     __interval = int(1000 / __framerate)
@@ -10,10 +10,8 @@ class Gui:
     __canvas_width = 500
     __canvas_height = 450
 
-    def __init__(self):
-        self.__window = tkinter.Tk()
-        self.__window.title("SortingAlgorithms at work")
-        self.__window.geometry("500x450")
+    def __init__(self, window):
+        self.__window = window
         self.__canvas = tkinter.Canvas(self.__window, height=self.__canvas_height, width=self.__canvas_width, bg="#FFF")
         self.__canvas.pack()
 

@@ -1,5 +1,5 @@
 from time import sleep
-from view.gui import Gui
+from view.SortingGui import SortingAnimation
 from sorting.bubblesort import bubblesort
 from sorting.selectionsort import selectionsort
 from sorting.heapsort import heapsort
@@ -7,7 +7,12 @@ from sorting.bogosort import bogosort
 from sorting.gnomesort import gnomesort
 from sorting.insertionsort import insertionsort
 from sorting.mergesort import iterative_mergesort
+from sorting.cyclesort import cyclesort
+from sorting.quicksort import quicksort
 from sorting.shellsort import shellsort
+from sorting.pancakesort import pancakesort
+from sorting.combsort import combsort
+from sorting.cocktailsort import cocktailsort
 from observable import observablelist
 
 
@@ -26,17 +31,16 @@ class InCopyDetector:
 
 
 class SortingController:
-
     __sortlist = observablelist.ObservableList()
     __sortalgorithm = None
     __sleeptime = 1
     __gui = None
     __in_copy_process_detector = None
 
-    def __init__(self, sortlist, sortalgorithm, sleeptime=1.0):
+    def __init__(self, window, sortlist, sortalgorithm, sleeptime=1.0):
         if sortlist is None:
             sortlist = []
-        self.__gui = Gui()
+        self.__gui = SortingAnimation(window)
         self.__sortalgorithm = sortalgorithm
         self.__sleeptime = sleeptime
         self.__in_copy_process_detector = InCopyDetector(sortlist)
@@ -54,6 +58,6 @@ class SortingController:
             self.__gui.draw_list(unsorted_list)
             sleep(self.__sleeptime)
 
-algorithms = [bubblesort, gnomesort, shellsort, iterative_mergesort, heapsort, selectionsort, insertionsort, bogosort]
-sc = SortingController([1, 12, 7, 4, 5, 11, 9, 2, 8, 3, 6, 10], algorithms[2], 0.75)
+algorithms = [bubblesort, combsort, cocktailsort, gnomesort, shellsort, iterative_mergesort, cyclesort, quicksort, heapsort, selectionsort, insertionsort, pancakesort, bogosort]
+sc = SortingController([13, 1, 12, 7, 4, 5, 11, 9, 2, 8, 15, 3, 6, 10, 14], algorithms[7], 0.75)
 sc.start()

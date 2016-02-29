@@ -1,6 +1,6 @@
 
 
-def shellsort(unsorted_list):
+def shellsort(unsorted_list) -> list:
     inc = len(unsorted_list) // 2
     while inc:
         for i, current_elem in enumerate(unsorted_list):
@@ -9,3 +9,5 @@ def shellsort(unsorted_list):
                 i -= inc
             unsorted_list[i] = current_elem
         inc = 1 if inc == 2 else int(inc * 5.0 / 11)
+
+    return unsorted_list
