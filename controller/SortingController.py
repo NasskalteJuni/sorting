@@ -14,6 +14,7 @@ from sorting.pancakesort import pancakesort
 from sorting.combsort import combsort
 from sorting.cocktailsort import cocktailsort
 from observable import observablelist
+from threading import Thread
 
 
 # just to not show the frames that have the swapping process
@@ -36,6 +37,7 @@ class SortingController:
     __sleeptime = 1
     __gui = None
     __in_copy_process_detector = None
+    __thread = None
 
     def __init__(self, window, sortlist, sortalgorithm, sleeptime=1.0):
         if sortlist is None:
@@ -50,14 +52,22 @@ class SortingController:
         self.__sortlist.add_observer(self)
 
     def start(self):
-        self.__sortalgorithm(self.__sortlist)
-        self.__gui.run()
+        try:
+            self.__thread = Thread(target=self.__sortalgorithm, args=(self.__sortlist,))
+            self.__thread.setDaemon(True)
+            self.__thread.start()
+        except:
+            print("An exception occurred during the sorting process")
+
+    def end(self):
+        self.__thread = None
+        # self.__gui.hide_list()
 
     def notify(self, unsorted_list):
         if not self.__in_copy_process_detector.has_copy_clone(unsorted_list):
             self.__gui.draw_list(unsorted_list)
             sleep(self.__sleeptime)
 
-algorithms = [bubblesort, combsort, cocktailsort, gnomesort, shellsort, iterative_mergesort, cyclesort, quicksort, heapsort, selectionsort, insertionsort, pancakesort, bogosort]
-sc = SortingController([13, 1, 12, 7, 4, 5, 11, 9, 2, 8, 15, 3, 6, 10, 14], algorithms[7], 0.75)
-sc.start()
+# algorithms = [bubblesort, combsort, cocktailsort, gnomesort, shellsort, iterative_mergesort, cyclesort, quicksort, heapsort, selectionsort, insertionsort, pancakesort, bogosort]
+# sc = SortingController([13, 1, 12, 7, 4, 5, 11, 9, 2, 8, 15, 3, 6, 10, 14], algorithms[7], 0.75)
+# sc.start()

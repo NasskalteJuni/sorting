@@ -3,8 +3,6 @@ import tkinter
 
 class SortingAnimation:
 
-    __framerate = 1
-    __interval = int(1000 / __framerate)
     __window = None
     __canvas = None
     __canvas_width = 500
@@ -12,7 +10,7 @@ class SortingAnimation:
 
     def __init__(self, window):
         self.__window = window
-        self.__canvas = tkinter.Canvas(self.__window, height=self.__canvas_height, width=self.__canvas_width, bg="#FFF")
+        self.__canvas = tkinter.Canvas(self.__window, height=self.__canvas_height, width=self.__canvas_width, bg="#222")
         self.__canvas.pack()
 
     def draw_list(self, drawable_list):
@@ -28,9 +26,6 @@ class SortingAnimation:
                 self.__canvas.create_rectangle(x0, y0, x1, y1, fill="#000099")
         self.__canvas.update()
 
-    def animate(self):
-        self.__window.after(self.__interval, self.animate)
-
-    def run(self):
-        self.animate()
-        self.__window.mainloop()
+    def hide_list(self):
+        if self.__canvas is not None:
+            self.__canvas.destroy()
