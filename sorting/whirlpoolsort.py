@@ -102,7 +102,3 @@ def whirlpoolsort(unsorted_list) -> list:
                 upper = 0
 
             # continue with this
-
-testlist = [10, 15, 1, 3, 9, 8, 12, 13, 2, 5, 14, 4, 7, 6, 11]
-whirlpoolsort(testlist)
-print(testlist)

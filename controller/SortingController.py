@@ -1,18 +1,5 @@
 from time import sleep
 from view.SortingGui import SortingAnimation
-from sorting.bubblesort import bubblesort
-from sorting.selectionsort import selectionsort
-from sorting.heapsort import heapsort
-from sorting.bogosort import bogosort
-from sorting.gnomesort import gnomesort
-from sorting.insertionsort import insertionsort
-from sorting.mergesort import iterative_mergesort
-from sorting.cyclesort import cyclesort
-from sorting.quicksort import quicksort
-from sorting.shellsort import shellsort
-from sorting.pancakesort import pancakesort
-from sorting.combsort import combsort
-from sorting.cocktailsort import cocktailsort
 from observable import observablelist
 from threading import Thread
 
@@ -38,6 +25,7 @@ class SortingController:
     __gui = None
     __in_copy_process_detector = None
     __thread = None
+    __stopped = False
 
     def __init__(self, window, sortlist, sortalgorithm, sleeptime=1.0):
         if sortlist is None:
@@ -50,6 +38,7 @@ class SortingController:
         for x in sortlist:
             self.__sortlist.append(x)
         self.__sortlist.add_observer(self)
+        self.__stopped = False
 
     def start(self):
         try:
@@ -60,13 +49,19 @@ class SortingController:
             print("An exception occurred during the sorting process")
 
     def end(self):
+        print("called end")
+        self.__gui = None
+        self.__sortlist = None
+        self.__sortlist = None
         self.__thread = None
+        self.__stopped = True
         # self.__gui.hide_list()
 
     def notify(self, unsorted_list):
-        if not self.__in_copy_process_detector.has_copy_clone(unsorted_list):
-            self.__gui.draw_list(unsorted_list)
-            sleep(self.__sleeptime)
+        if not self.__stopped:
+            if not self.__in_copy_process_detector.has_copy_clone(unsorted_list):
+                self.__gui.draw_list(unsorted_list)
+                sleep(self.__sleeptime)
 
 # algorithms = [bubblesort, combsort, cocktailsort, gnomesort, shellsort, iterative_mergesort, cyclesort, quicksort, heapsort, selectionsort, insertionsort, pancakesort, bogosort]
 # sc = SortingController([13, 1, 12, 7, 4, 5, 11, 9, 2, 8, 15, 3, 6, 10, 14], algorithms[7], 0.75)

@@ -5,8 +5,20 @@ from tkinter import Tk
 from sorting.bubblesort import bubblesort
 from sorting.pancakesort import pancakesort
 from sorting.cocktailsort import cocktailsort
+from sorting.whirlpoolsort import whirlpoolsort
+from sorting.quicksort import quicksort
+from sorting.shellsort import shellsort
+from sorting.bogosort import bogosort
+from sorting.combsort import combsort
+from sorting.cyclesort import cyclesort
+from sorting.insertionsort import insertionsort
+from sorting.mergesort import iterative_mergesort
+from sorting.gnomesort import gnomesort
+from sorting.heapsort import heapsort
+from sorting.selectionsort import selectionsort
 from copy import deepcopy
 from threading import Thread
+
 
 class MainController:
 
@@ -18,7 +30,6 @@ class MainController:
     __thread = None
     __list_control = None
     __sort_control = None
-    __thread = None
 
     def __init__(self):
         self.__window = Tk()
@@ -27,9 +38,22 @@ class MainController:
         self.__window.resizable(0, 0)
         self.__window.configure(bg="#222")
         self.__gui = MainWindow(self.__window, self)
-        self.__algorithm_dictionary = {"bubble sort": bubblesort, "pancake sort": pancakesort, "cocktail sort": cocktailsort}
-        self.__algorithm = self.__algorithm_dictionary[self.__get_a_key(self.__algorithm_dictionary)]
-        self.__list = [3, 1, 9, 8, 6, 4, 5, 2, 7]
+        self.__algorithm_dictionary = {
+            "bubble sort": bubblesort,
+            "pancake sort": pancakesort,
+            "cocktail sort": cocktailsort,
+            "merge sort": iterative_mergesort,
+            "whirlpool sort": whirlpoolsort,
+            "quick sort": quicksort,
+            "gnome sort": gnomesort,
+            "heap sort": heapsort,
+            "selection sort": selectionsort,
+            "shell sort": shellsort,
+            "bogo sort": bogosort,
+            "comb sort": combsort,
+            "cycle sort": cyclesort,
+            "insertion sort": insertionsort
+        }
 
     def start(self):
         self.__gui.show_menu(self.__algorithm_dictionary)
@@ -68,8 +92,6 @@ class MainController:
         self.__sort_control = SortingController(self.__window, self.__list, self.__algorithm, sleeptime=0.25)
         self.__sort_control.start()
         self.__sort_control.end()
-
-
 
     def show_lists(self):
         self.__list_control = ListController(self.__window, self)
