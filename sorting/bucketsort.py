@@ -1,5 +1,4 @@
-import itertools
-
+from itertools import chain
 
 def bucketsort(unsorted_list) -> list:
     minimum = min(unsorted_list)
@@ -17,4 +16,4 @@ def bucketsort(unsorted_list) -> list:
     for i in range(0, len(unsorted_list)):
         buckets[__get_key(unsorted_list[i])].append(unsorted_list[i])
 
-    return list(itertools.chain.from_iterable(buckets))
+    return list(chain.from_iterable(buckets))

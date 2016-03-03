@@ -1,4 +1,4 @@
-import itertools
+from itertools import permutations
 
 
 def bogosort(unsorted_list) -> list:
@@ -12,7 +12,7 @@ def bogosort(unsorted_list) -> list:
                 return False
         return True
 
-    for permutation in itertools.permutations(unsorted_list):
+    for permutation in permutations(unsorted_list):
         if __is_sorted(unsorted_list):
             return unsorted_list
         else:

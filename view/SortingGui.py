@@ -1,4 +1,4 @@
-import tkinter
+from tkinter import Canvas
 
 
 class SortingAnimation:
@@ -10,7 +10,7 @@ class SortingAnimation:
 
     def __init__(self, window):
         self.__window = window
-        self.__canvas = tkinter.Canvas(self.__window, height=self.__canvas_height, width=self.__canvas_width, bg="#222")
+        self.__canvas = Canvas(self.__window, height=self.__canvas_height, width=self.__canvas_width, bg="#222")
         self.__canvas.pack()
 
     def draw_list(self, drawable_list):
