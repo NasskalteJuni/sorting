@@ -49,19 +49,29 @@ class SortingController:
             print("An exception occurred during the sorting process")
 
     def end(self):
+        self.kill_sorting_thread()
         print("called end")
-        self.__gui = None
+        if self.__gui is not None:
+            self.destroy_gui()
         self.__sortlist = None
-        self.__sortlist = None
+        self.__sortalgorithm = None
         self.__thread = None
         self.__stopped = True
-        # self.__gui.hide_list()
 
     def notify(self, unsorted_list):
         if not self.__stopped:
             if not self.__in_copy_process_detector.has_copy_clone(unsorted_list):
                 self.__gui.draw_list(unsorted_list)
                 sleep(self.__sleeptime)
+
+    def destroy_gui(self):
+        self.__gui.hide_list()
+        self.__gui = None
+
+    def kill_sorting_thread(self):
+        if self.__thread is not None:
+            self.__thread._delete()
+            self.__thread = None
 
 # algorithms = [bubblesort, combsort, cocktailsort, gnomesort, shellsort, iterative_mergesort, cyclesort, quicksort, heapsort, selectionsort, insertionsort, pancakesort, bogosort]
 # sc = SortingController([13, 1, 12, 7, 4, 5, 11, 9, 2, 8, 15, 3, 6, 10, 14], algorithms[7], 0.75)

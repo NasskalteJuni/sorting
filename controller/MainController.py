@@ -16,8 +16,8 @@ from sorting.mergesort import iterative_mergesort
 from sorting.gnomesort import gnomesort
 from sorting.heapsort import heapsort
 from sorting.selectionsort import selectionsort
+from sorting.slowsort import slowersort
 from copy import deepcopy
-from threading import Thread
 
 
 class MainController:
@@ -27,7 +27,6 @@ class MainController:
     __list = None
     __window = None
     __gui = None
-    __thread = None
     __list_control = None
     __sort_control = None
 
@@ -52,7 +51,8 @@ class MainController:
             "bogo sort": bogosort,
             "comb sort": combsort,
             "cycle sort": cyclesort,
-            "insertion sort": insertionsort
+            "insertion sort": insertionsort,
+            "slow sort": slowersort
         }
 
     def start(self):
@@ -61,22 +61,17 @@ class MainController:
 
     def set_algorithm(self, algorithm):
         if algorithm is not None:
-            if self.__sort_control is not None:
-                self.__sort_control.end()
             self.__algorithm = algorithm
-            self.__thread = Thread(target=self.show_animation,)
-            self.__thread.start()
+            self.show_animation()
 
     def get_algorithm(self):
         return self.__algorithm
 
     def set_list(self, input_list):
+        print("called setlist")
         if input_list is not None and len(input_list) > 0:
-            if self.__sort_control is not None:
-                self.__sort_control.end()
             self.__list = input_list
-            self.__thread = Thread(target=self.show_animation,)
-            self.__thread.start()
+            self.show_animation()
 
     def get_list(self):
         if self.__list is None:
@@ -89,9 +84,9 @@ class MainController:
         self.__algorithm = deepcopy(self.__algorithm)
         if self.__sort_control is not None:
             self.__sort_control.end()
+            self.__sort_control = None
         self.__sort_control = SortingController(self.__window, self.__list, self.__algorithm, sleeptime=0.25)
         self.__sort_control.start()
-        self.__sort_control.end()
 
     def show_lists(self):
         self.__list_control = ListController(self.__window, self)
@@ -99,6 +94,7 @@ class MainController:
     def __get_a_key(self, dictionary):
         for key in dictionary.keys():
             return key
+
 
 mc = MainController()
 mc.start()
