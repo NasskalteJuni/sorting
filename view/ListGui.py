@@ -16,7 +16,7 @@ class ListWindow:
         self.__main_controller = main_controller
         self.__list = self.__main_controller.get_list()
         self.__min_var = IntVar()
-        self.__min_var.set(0)
+        self.__min_var.set(1)
         self.__max_var = IntVar()
         self.__max_var.set(15)
         self.__list_string_var = StringVar()
@@ -34,14 +34,14 @@ class ListWindow:
         true_random_btn = Button(line1)
         true_random_btn.configure(text="create random list", command=self.__create_absolutely_random_list)
         true_random_btn.pack(side=LEFT)
-        min_field = Spinbox(line1, from_=1, to=15)
+        min_field = Spinbox(line1, from_=1, to=100)
         min_field.configure(textvariable=self.__min_var)
         min_field.pack(side=LEFT)
-        max_field = Spinbox(line1, from_=1, to=15)
+        max_field = Spinbox(line1, from_=1, to=100)
         max_field.configure(textvariable=self.__max_var)
         max_field.pack(side=LEFT)
         line2 = Frame(self.__menu)
-        line2.pack(side=TOP,fill=X, expand=False, padx=5, pady=15)
+        line2.pack(side=TOP, fill=X, expand=False, padx=5, pady=15)
         list_field = Entry(line2)
         list_field.configure(textvariable=self.__list_string_var)
         list_field.pack(fill=X)
@@ -60,7 +60,8 @@ By clicking on 'Submit', the list in the inputfield becomes the list to sort and
         information.pack(side=BOTTOM, fill=X, padx=5, pady=10)
 
     def submit(self):
-        if self.__list_string_var.get() is not None and len(self.__create_list_with_input(self.__list_string_var.get())) > 0:
+        if self.__list_string_var.get() is not None \
+                and len(self.__create_list_with_input(self.__list_string_var.get())) > 0:
             self.__main_controller.set_list(self.__create_list_with_input(self.__list_string_var.get()))
             self.hide_list()
 
@@ -69,11 +70,13 @@ By clicking on 'Submit', the list in the inputfield becomes the list to sort and
             self.__menu.destroy()
 
     def __create_nearly_sorted_list(self):
-        new_list = self.__main_controller.create_nearly_sorted_list(min_value=self.__min_var.get(), max_value=self.__max_var.get())
+        new_list = self.__main_controller.create_nearly_sorted_list(min_value=self.__min_var.get(),
+                                                                    max_value=self.__max_var.get())
         self.__list_string_var.set(self.__create_input_from_list(new_list))
 
     def __create_absolutely_random_list(self):
-        new_list = self.__main_controller.create_absolutely_random_list(min_value=self.__min_var.get(), max_value=self.__max_var.get())
+        new_list = self.__main_controller.create_absolutely_random_list(min_value=self.__min_var.get(),
+                                                                        max_value=self.__max_var.get())
         self.__list_string_var.set(self.__create_input_from_list(new_list))
 
     def __create_list_with_input(self, input_string) -> list:

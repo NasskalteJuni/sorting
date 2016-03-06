@@ -1,8 +1,5 @@
 class Observer:
 
-    __notify_callback = None
-    __block_notify = False
-
     def __init__(self, notify_callback, block_notify=False):
         self.__notify_callback = notify_callback
         self.__block_notify = block_notify

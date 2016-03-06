@@ -1,7 +1,6 @@
 from view.MainGui import MainWindow
 from controller.ListEditController import ListController
 from controller.SortingController import SortingController
-from tkinter import Tk
 from sorting.bubblesort import bubblesort
 from sorting.pancakesort import pancakesort
 from sorting.cocktailsort import cocktailsort
@@ -17,25 +16,14 @@ from sorting.gnomesort import gnomesort
 from sorting.heapsort import heapsort
 from sorting.selectionsort import selectionsort
 from sorting.slowsort import slowersort
-from time import sleep
+from threading import Thread
 
 
-def do_work():
-    while True:
-        sleep(1)
-        print("working!")
-
-
+# The main controller that is a central node which coordinates different sub-controllers and tells them what to do
 class MainController:
 
-    __algorithm_dictionary = None
-    __algorithm = None
-    __list = None
-    __window = None
-    __gui = None
-    __list_control = None
     __sort_control = None
-
+    __list_control = None
 
     def __init__(self, window):
         self.__init_window__(window)
@@ -57,7 +45,7 @@ class MainController:
             "slow sort": slowersort
         }
         self.__algorithm = self.__algorithm_dictionary[self.__get_a_key(self.__algorithm_dictionary)]
-        self.__list = [1, 8, 7, 4, 9, 3, 2, 5, 6, 4]
+        self.__list = [1, 8, 7, 10, 9, 3, 2, 5, 6, 4]
 
     def start(self):
         if self.__gui is not None:
@@ -89,8 +77,12 @@ class MainController:
         self.__sort_control.start()
 
     def restart_animation(self):
-        self.stop_animation()
-        self.start_animation()
+        def inner_func():
+            self.stop_animation()
+            self.start_animation()
+        t = Thread(target=inner_func, args=())
+        t.setDaemon(True)
+        t.start()
 
     def stop_animation(self):
         print("stopped animation")
@@ -103,7 +95,8 @@ class MainController:
             self.__sort_control.end()
         self.__list_control = ListController(self.__window, self)
 
-    def __get_a_key(self, dictionary):
+    @staticmethod
+    def __get_a_key(dictionary):
         for key in dictionary.keys():
             return key
 

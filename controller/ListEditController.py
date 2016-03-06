@@ -15,15 +15,15 @@ class ListController:
         self.__gui = ListWindow(window, self)
         self.__gui.show_list_edit()
 
-    def create_nearly_sorted_list(self, min_value, max_value, reversed=False):
+    def create_nearly_sorted_list(self, min_value: int, max_value: int, reversed=False):
         reverse = reversed
         if min_value > max_value:
             reverse = not reverse
             min_value, max_value = max_value, min_value
         tmp_list = []
         for x in range(min_value, max_value):
-            tmp_list.append(min_value+x)
-        number_of_random_swaps = ceil((max_value-min_value)/10)
+            tmp_list.append(min_value + x)
+        number_of_random_swaps = ceil((max_value - min_value)/10)
         for x in range(0, number_of_random_swaps):
             rnd1 = randint(0, len(tmp_list)-1)
             rnd2 = randint(0, len(tmp_list)-1)
@@ -63,4 +63,3 @@ class ListController:
     def back_to_animation(self):
         self.__gui.hide_list()
         self.__main_controller.set_list(self.__list)
-

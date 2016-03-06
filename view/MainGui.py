@@ -1,13 +1,7 @@
 from tkinter import Menu
-from view.StyleGuide import *
 
 
 class MainWindow:
-
-    __main_window = None
-    __main_controller = None
-
-
 
     def __init__(self, window, main_controller):
         self.__main_controller = main_controller
@@ -16,7 +10,6 @@ class MainWindow:
         self.__main_window.geometry("500x450")
         self.__main_window.resizable(0, 0)
         self.__main_window.configure(bg="#222")
-
 
     def show_menu(self, algorithm_dict):
         menu = Menu(self.__main_window)
