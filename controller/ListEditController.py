@@ -54,11 +54,29 @@ class ListController:
         self.__list = tmp_list
         return self.__list
 
+    def reverse_list(self, given_list):
+        if given_list is not None:
+            given_list.reverse()
+        return given_list
+
+    def create_few_unique(self, min_value, max_value):
+        length = abs(max_value-min_value)
+        tmp_list = []
+        steps = [x for x in range(min_value, max_value, int(length/4))]
+        for i in range(min_value, max_value):
+            tmp_list.append(steps[randint(0, len(steps)-1)])
+        self.__list = tmp_list
+        return tmp_list
+
+
     def set_list(self, input_list):
+        self.__list = input_list
         self.__main_controller.set_list(input_list)
 
     def get_list(self):
-        self.__main_controller.get_list()
+        if self.__list is None or len(self.__list) < 1:
+            self.__list = self.__main_controller.get_list()
+        return self.__list
 
     def back_to_animation(self):
         self.__gui.hide_list()

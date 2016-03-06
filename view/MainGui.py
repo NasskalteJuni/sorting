@@ -23,3 +23,15 @@ class MainWindow:
             dropdown_algorithm_menu.add_command(label=algorithm, command=__set_algorithm(algorithm))
         menu.add_cascade(label="algorithms", menu=dropdown_algorithm_menu)
         menu.add_command(label="edit list", command=self.__main_controller.show_lists)
+        velocity_menu = Menu(menu, tearoff=0)
+        def set_to_slow():
+            self.__main_controller.set_sleeptime(0.5)
+        velocity_menu.add_command(label="slow", command=set_to_slow)
+        def set_to_medium():
+            self.__main_controller.set_sleeptime(0.25)
+        velocity_menu.add_command(label="normal", command=set_to_medium)
+        def set_to_fast():
+            self.__main_controller.set_sleeptime(0.05)
+        velocity_menu.add_command(label="fast", command=set_to_fast)
+        menu.add_cascade(label="speed", menu=velocity_menu)
+

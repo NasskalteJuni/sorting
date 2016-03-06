@@ -43,7 +43,6 @@ class SortingProcess:
     __pipe = None
 
     def __init__(self, algorithm, sortable_list, on_sort_callback, sleeptime, name="running_sorting_algorithm"):
-        print("created process...")
         self.__event = Event()
         self.__pipe, process_end_pipe = Pipe()
         self.__listener = Thread(target=listening, args=(on_sort_callback, self.__pipe, self.__event))
@@ -51,7 +50,6 @@ class SortingProcess:
         self.__process.name = name
 
     def start(self):
-        print("started process")
         self.__event.set()
         if self.__process is not None and self.__pipe is not None and not self.__process.is_alive():
             try:
@@ -63,7 +61,6 @@ class SortingProcess:
                 print("Error starting the process")
 
     def stop(self):
-        print("stopped process")
         self.__event.clear()
         if self.__pipe is not None:
             self.__pipe.close()

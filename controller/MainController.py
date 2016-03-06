@@ -4,7 +4,6 @@ from controller.SortingController import SortingController
 from sorting.bubblesort import bubblesort
 from sorting.pancakesort import pancakesort
 from sorting.cocktailsort import cocktailsort
-from sorting.whirlpoolsort import whirlpoolsort
 from sorting.quicksort import quicksort
 from sorting.shellsort import shellsort
 from sorting.bogosort import bogosort
@@ -32,7 +31,6 @@ class MainController:
             "pancake sort": pancakesort,
             "cocktail sort": cocktailsort,
             "merge sort": iterative_mergesort,
-            "whirlpool sort": whirlpoolsort,
             "quick sort": quicksort,
             "gnome sort": gnomesort,
             "heap sort": heapsort,
@@ -46,10 +44,12 @@ class MainController:
         }
         self.__algorithm = self.__algorithm_dictionary[self.__get_a_key(self.__algorithm_dictionary)]
         self.__list = [1, 8, 7, 10, 9, 3, 2, 5, 6, 4]
+        self.__sleeptime = 0.5
 
     def start(self):
         if self.__gui is not None:
             self.__gui.show_menu(self.__algorithm_dictionary)
+            self.restart_animation()
             self.__window.mainloop()
 
     def set_algorithm(self, algorithm):
@@ -71,9 +71,13 @@ class MainController:
         else:
             return self.__list
 
+    def set_sleeptime(self, sleeptime):
+        self.__sleeptime = sleeptime
+        self.restart_animation()
+
     def start_animation(self):
         print("started animation")
-        self.__sort_control = SortingController(self.__window, self.__list, self.__algorithm, 0.5)
+        self.__sort_control = SortingController(self.__window, self.__list, self.__algorithm, self.__sleeptime)
         self.__sort_control.start()
 
     def restart_animation(self):

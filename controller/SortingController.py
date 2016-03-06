@@ -24,7 +24,6 @@ class SortingController:
         self.__gui = SortingAnimation(window)
         self.__sortalgorithm = sortalgorithm
         self.__sleeptime = sleeptime
-        print("the given sortlist was "+str(sortlist))
         self.__in_copy_process_detector = InCopyDetector(sortlist)
         self.__sortlist = sortlist
         self.__process = SortingProcess(self.__sortalgorithm, self.__sortlist, self.notify, sleeptime=sleeptime)
@@ -34,7 +33,6 @@ class SortingController:
 
     def end(self):
         self.__process.stop()
-        print("called end")
         if self.__gui is not None:
             self.destroy_gui()
 

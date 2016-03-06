@@ -28,23 +28,29 @@ class ListWindow:
         self.__menu.pack(fill=BOTH, expand=True)
         line1 = Frame(self.__menu)
         line1.pack(side=TOP, fill=X, expand=False, padx=5, pady=15)
-        near_sorted_btn = Button(line1, command=self.__main_controller.create_nearly_sorted_list)
+        near_sorted_btn = Button(line1)
         near_sorted_btn.configure(text="create nearly sorted list", command=self.__create_nearly_sorted_list)
         near_sorted_btn.pack(side=LEFT)
         true_random_btn = Button(line1)
         true_random_btn.configure(text="create random list", command=self.__create_absolutely_random_list)
         true_random_btn.pack(side=LEFT)
-        min_field = Spinbox(line1, from_=1, to=100)
-        min_field.configure(textvariable=self.__min_var)
-        min_field.pack(side=LEFT)
+        few_unique_btn = Button(line1)
+        few_unique_btn.configure(text="create few unique", command=self.__create_few_unique)
+        few_unique_btn.pack(side=LEFT)
         max_field = Spinbox(line1, from_=1, to=100)
-        max_field.configure(textvariable=self.__max_var)
-        max_field.pack(side=LEFT)
+        max_field.configure(textvariable=self.__max_var, width=9)
+        max_field.pack(side=RIGHT)
+        min_field = Spinbox(line1, from_=1, to=100)
+        min_field.configure(textvariable=self.__min_var, width=9)
+        min_field.pack(side=RIGHT)
         line2 = Frame(self.__menu)
         line2.pack(side=TOP, fill=X, expand=False, padx=5, pady=15)
         list_field = Entry(line2)
         list_field.configure(textvariable=self.__list_string_var)
-        list_field.pack(fill=X)
+        list_field.pack(fill=X, expand=True, side=LEFT)
+        reverse_btn = Button(line2)
+        reverse_btn.configure(text="reverse", command=self.__reverse)
+        reverse_btn.pack(side=RIGHT)
         line3 = Frame(self.__menu)
         line3.pack(fill=X, expand=False, padx=5, pady=15)
         submit_btn = Button(line3)
@@ -77,6 +83,15 @@ By clicking on 'Submit', the list in the inputfield becomes the list to sort and
     def __create_absolutely_random_list(self):
         new_list = self.__main_controller.create_absolutely_random_list(min_value=self.__min_var.get(),
                                                                         max_value=self.__max_var.get())
+        self.__list_string_var.set(self.__create_input_from_list(new_list))
+
+    def __create_few_unique(self):
+        new_list = self.__main_controller.create_few_unique(min_value=self.__min_var.get(),
+                                                            max_value=self.__max_var.get())
+        self.__list_string_var.set(self.__create_input_from_list(new_list))
+
+    def __reverse(self):
+        new_list = self.__main_controller.reverse_list(self.__create_list_with_input(self.__list_string_var.get()))
         self.__list_string_var.set(self.__create_input_from_list(new_list))
 
     def __create_list_with_input(self, input_string) -> list:
