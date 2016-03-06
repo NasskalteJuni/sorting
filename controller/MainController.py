@@ -56,6 +56,8 @@ class MainController:
             "insertion sort": insertionsort,
             "slow sort": slowersort
         }
+        self.__algorithm = self.__algorithm_dictionary[self.__get_a_key(self.__algorithm_dictionary)]
+        self.__list = [1, 8, 7, 4, 9, 3, 2, 5, 6, 4]
 
     def start(self):
         if self.__gui is not None:

@@ -1,6 +1,6 @@
 from time import sleep
 
-from business.SortingProcess import ProcessDummy
+from business.SortingProcess import SortingProcess
 from observable import observablelist
 from view.SortingGui import SortingAnimation
 
@@ -39,7 +39,7 @@ class SortingController:
         for x in sortlist:
             self.__sortlist.append(x)
         self.__sortlist.add_observer(self)
-        self.__process = ProcessDummy(target=self.__sortalgorithm, args=(self.__sortlist,))
+        self.__process = SortingProcess(self.__sortalgorithm, self.__sortlist, self.notify)
 
     def start(self):
         self.__process.start()
@@ -53,10 +53,10 @@ class SortingController:
         self.__stopped = True
 
     def notify(self, unsorted_list):
+        print("unsorted_list: "+str(unsorted_list))
         if not self.__stopped:
             if not self.__in_copy_process_detector.has_copy_clone(unsorted_list):
                 self.__gui.draw_list(list(unsorted_list))
-                sleep(self.__sleeptime)
 
     def destroy_gui(self):
         self.__gui.hide_list()

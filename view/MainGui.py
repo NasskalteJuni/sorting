@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import Menu
 from view.StyleGuide import *
 
 
