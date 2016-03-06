@@ -61,8 +61,8 @@ By clicking on 'Submit', the list in the inputfield becomes the list to sort and
 
     def submit(self):
         if self.__list_string_var.get() is not None and len(self.__create_list_with_input(self.__list_string_var.get())) > 0:
-            self.__main_controller.back_to_animation()
             self.__main_controller.set_list(self.__create_list_with_input(self.__list_string_var.get()))
+            self.hide_list()
 
     def hide_list(self):
         if self.__menu is not None:

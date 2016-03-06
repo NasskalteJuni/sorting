@@ -1,7 +1,8 @@
 from time import sleep
-from view.SortingGui import SortingAnimation
+
+from business.SortingProcess import ProcessDummy
 from observable import observablelist
-from threading import Thread
+from view.SortingGui import SortingAnimation
 
 
 # just to not show the frames that have the swapping process
@@ -24,8 +25,8 @@ class SortingController:
     __sleeptime = 1
     __gui = None
     __in_copy_process_detector = None
-    __thread = None
-    __stopped = False
+    __process = None
+    __stopped = True
 
     def __init__(self, window, sortlist, sortalgorithm, sleeptime=1.0):
         if sortlist is None:
@@ -38,40 +39,30 @@ class SortingController:
         for x in sortlist:
             self.__sortlist.append(x)
         self.__sortlist.add_observer(self)
-        self.__stopped = False
+        self.__process = ProcessDummy(target=self.__sortalgorithm, args=(self.__sortlist,))
 
     def start(self):
-        try:
-            self.__thread = Thread(target=self.__sortalgorithm, args=(self.__sortlist,))
-            self.__thread.setDaemon(True)
-            self.__thread.start()
-        except:
-            print("An exception occurred during the sorting process")
+        self.__process.start()
+        self.__stopped = False
 
     def end(self):
-        self.kill_sorting_thread()
+        self.__process.stop()
         print("called end")
         if self.__gui is not None:
             self.destroy_gui()
-        self.__sortlist = None
-        self.__sortalgorithm = None
-        self.__thread = None
         self.__stopped = True
 
     def notify(self, unsorted_list):
         if not self.__stopped:
             if not self.__in_copy_process_detector.has_copy_clone(unsorted_list):
-                self.__gui.draw_list(unsorted_list)
+                self.__gui.draw_list(list(unsorted_list))
                 sleep(self.__sleeptime)
 
     def destroy_gui(self):
         self.__gui.hide_list()
         self.__gui = None
 
-    def kill_sorting_thread(self):
-        if self.__thread is not None:
-            self.__thread._delete()
-            self.__thread = None
+
 
 # algorithms = [bubblesort, combsort, cocktailsort, gnomesort, shellsort, iterative_mergesort, cyclesort, quicksort, heapsort, selectionsort, insertionsort, pancakesort, bogosort]
 # sc = SortingController([13, 1, 12, 7, 4, 5, 11, 9, 2, 8, 15, 3, 6, 10, 14], algorithms[7], 0.75)

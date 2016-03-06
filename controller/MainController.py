@@ -17,7 +17,13 @@ from sorting.gnomesort import gnomesort
 from sorting.heapsort import heapsort
 from sorting.selectionsort import selectionsort
 from sorting.slowsort import slowersort
-from copy import deepcopy
+from time import sleep
+
+
+def do_work():
+    while True:
+        sleep(1)
+        print("working!")
 
 
 class MainController:
@@ -30,13 +36,9 @@ class MainController:
     __list_control = None
     __sort_control = None
 
-    def __init__(self):
-        self.__window = Tk()
-        self.__window.title("SortingAlgorithms at work")
-        self.__window.geometry("500x450")
-        self.__window.resizable(0, 0)
-        self.__window.configure(bg="#222")
-        self.__gui = MainWindow(self.__window, self)
+
+    def __init__(self, window):
+        self.__init_window__(window)
         self.__algorithm_dictionary = {
             "bubble sort": bubblesort,
             "pancake sort": pancakesort,
@@ -56,22 +58,22 @@ class MainController:
         }
 
     def start(self):
-        self.__gui.show_menu(self.__algorithm_dictionary)
-        self.__window.mainloop()
+        if self.__gui is not None:
+            self.__gui.show_menu(self.__algorithm_dictionary)
+            self.__window.mainloop()
 
     def set_algorithm(self, algorithm):
         if algorithm is not None:
             self.__algorithm = algorithm
-            self.show_animation()
+        self.restart_animation()
 
     def get_algorithm(self):
         return self.__algorithm
 
     def set_list(self, input_list):
-        print("called setlist")
         if input_list is not None and len(input_list) > 0:
             self.__list = input_list
-            self.show_animation()
+        self.restart_animation()
 
     def get_list(self):
         if self.__list is None:
@@ -79,22 +81,30 @@ class MainController:
         else:
             return self.__list
 
-    def show_animation(self):
-        self.__list = deepcopy(self.__list)
-        self.__algorithm = deepcopy(self.__algorithm)
+    def start_animation(self):
+        print("started animation")
+        self.__sort_control = SortingController(self.__window, self.__list, self.__algorithm, 0.5)
+        self.__sort_control.start()
+
+    def restart_animation(self):
+        self.stop_animation()
+        self.start_animation()
+
+    def stop_animation(self):
+        print("stopped animation")
         if self.__sort_control is not None:
             self.__sort_control.end()
             self.__sort_control = None
-        self.__sort_control = SortingController(self.__window, self.__list, self.__algorithm, sleeptime=0.25)
-        self.__sort_control.start()
 
     def show_lists(self):
+        if self.__sort_control is not None:
+            self.__sort_control.end()
         self.__list_control = ListController(self.__window, self)
 
     def __get_a_key(self, dictionary):
         for key in dictionary.keys():
             return key
 
-
-mc = MainController()
-mc.start()
+    def __init_window__(self, window=None):
+        self.__window = window
+        self.__gui = MainWindow(self.__window, self)

@@ -62,4 +62,5 @@ class ListController:
 
     def back_to_animation(self):
         self.__gui.hide_list()
-        self.__main_controller.show_animation()
+        self.__main_controller.set_list(self.__list)
+
