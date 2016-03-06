@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c13884dd-ada5-4fd6-9e85-fd31f4194857" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/observable/observer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sorting.iml" afterPath="$PROJECT_DIR$/.idea/sorting.iml" />
+    <list default="true" id="c13884dd-ada5-4fd6-9e85-fd31f4194857" name="Default" comment="Gitignore hinzugefügt">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/SortingProcess.py" afterPath="$PROJECT_DIR$/business/SortingProcess.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/MainController.py" afterPath="$PROJECT_DIR$/controller/MainController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/SortingController.py" afterPath="$PROJECT_DIR$/controller/SortingController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/MainGui.py" afterPath="$PROJECT_DIR$/view/MainGui.py" />
     </list>
     <ignored path="sorting.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -630,7 +627,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457270523193</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Ich hasse mein Leben">
+      <created>1457290860070</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1457290860070</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -679,7 +682,8 @@
     <MESSAGE value="Problems with switching the algorithms" />
     <MESSAGE value="Aufräumen..." />
     <MESSAGE value="Abändern, main script einbauen, aufräumen, umstellen. In kurz: Refactoring. Zudem für das Sortieren einen stopbaren Prozess erstellt - Threads lassen sich nicht so einfach killen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Abändern, main script einbauen, aufräumen, umstellen. In kurz: Refactoring. Zudem für das Sortieren einen stopbaren Prozess erstellt - Threads lassen sich nicht so einfach killen" />
+    <MESSAGE value="Ich hasse mein Leben" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ich hasse mein Leben" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
