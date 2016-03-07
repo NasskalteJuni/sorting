@@ -1,6 +1,7 @@
 from view.MainGui import MainWindow
 from controller.ListEditController import ListController
 from controller.SortingController import SortingController
+from controller.AlgorithmEditController import AlgorithmController
 from threading import Thread
 from sorting.algorithmlist import get_algorithmlist
 
@@ -10,6 +11,8 @@ class MainController:
 
     __sort_control = None
     __list_control = None
+    __algorithm_control = None
+    __user_algorithm = None
 
     def __init__(self, window):
         self.__init_window__(window)
@@ -71,7 +74,6 @@ class MainController:
         if self.__sort_control is not None:
             self.__sort_control.end()
         self.__list_control = ListController(self.__window, self)
-
 
     def __init_window__(self, window=None):
         self.__window = window

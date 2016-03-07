@@ -12,30 +12,8 @@ from sorting.gnomesort import gnomesort
 from sorting.heapsort import heapsort
 from sorting.selectionsort import selectionsort
 from sorting.slowsort import slowersort
-import functools
-import inspect
+from sorting.smoothsort import smoothsort
 
-
-def sorting_algorithm(wrapped):
-   @functools.wraps(wrapped)  # optional - make wrapper look like wrapped
-   def wrapper(*args):
-        print('inside wrapper:')
-        fsig = inspect.signature(wrapped)
-        parameters = ', '.join('{}={}'.format(*pair)
-                               for pair in zip(fsig.parameters, args))
-        print('  wrapped call to {}({})'.format(wrapped.__name__, parameters))
-        for parameter in fsig.parameters.values():
-            print("  {} param's annotation: {!r}".format(parameter.name,
-                                                         parameter.annotation))
-        result = wrapped(*args)
-        print('  returning {!r} with annotation: {!r}'.format(result,
-                                                         fsig.return_annotation))
-        return result
-   return wrapper
-
-@sorting_algorithm
-def my_alg(unsorted_list):
-    return unsorted_list
 
 def get_algorithmlist():
     algorithms = [
@@ -52,9 +30,8 @@ def get_algorithmlist():
         ("comb sort", combsort),
         ("cycle sort", cyclesort),
         ("insertion sort", insertionsort),
-        ("slow sort", slowersort)
+        ("slow sort", slowersort),
+        ("smooth sort", smoothsort)
     ]
     algorithms.sort(key=lambda tpl: tpl[0])
     return algorithms
-
-print(sorting_algorithm([1]))

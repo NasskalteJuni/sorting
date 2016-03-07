@@ -10,6 +10,7 @@ class MainWindow:
         self.__main_window.geometry("500x450")
         self.__main_window.resizable(0, 0)
         self.__main_window.configure(bg="#222")
+        self.__menu = None
 
     def show_menu(self, algorithm_dict):
         menu = Menu(self.__main_window)
@@ -34,4 +35,13 @@ class MainWindow:
             self.__main_controller.set_sleeptime(0.05)
         velocity_menu.add_command(label="fast", command=set_to_fast)
         menu.add_cascade(label="speed", menu=velocity_menu)
+        self.__menu = menu
 
+    def hide_menu(self):
+        if self.__menu is not None:
+            self.__menu.destroy()
+            self.__menu = None
+
+    def refresh_menu(self, algorithm_list):
+        self.hide_menu()
+        self.show_menu(algorithm_list)
