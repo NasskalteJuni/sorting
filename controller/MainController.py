@@ -1,21 +1,8 @@
 from view.MainGui import MainWindow
 from controller.ListEditController import ListController
 from controller.SortingController import SortingController
-from sorting.bubblesort import bubblesort
-from sorting.pancakesort import pancakesort
-from sorting.cocktailsort import cocktailsort
-from sorting.quicksort import quicksort
-from sorting.shellsort import shellsort
-from sorting.bogosort import bogosort
-from sorting.combsort import combsort
-from sorting.cyclesort import cyclesort
-from sorting.insertionsort import insertionsort
-from sorting.mergesort import iterative_mergesort
-from sorting.gnomesort import gnomesort
-from sorting.heapsort import heapsort
-from sorting.selectionsort import selectionsort
-from sorting.slowsort import slowersort
 from threading import Thread
+from sorting.algorithmlist import get_algorithmlist
 
 
 # The main controller that is a central node which coordinates different sub-controllers and tells them what to do
@@ -26,25 +13,11 @@ class MainController:
 
     def __init__(self, window):
         self.__init_window__(window)
-        self.__algorithm_dictionary = {
-            "bubble sort": bubblesort,
-            "pancake sort": pancakesort,
-            "cocktail sort": cocktailsort,
-            "merge sort": iterative_mergesort,
-            "quick sort": quicksort,
-            "gnome sort": gnomesort,
-            "heap sort": heapsort,
-            "selection sort": selectionsort,
-            "shell sort": shellsort,
-            "bogo sort": bogosort,
-            "comb sort": combsort,
-            "cycle sort": cyclesort,
-            "insertion sort": insertionsort,
-            "slow sort": slowersort
-        }
-        self.__algorithm = self.__algorithm_dictionary[self.__get_a_key(self.__algorithm_dictionary)]
-        self.__list = [1, 8, 7, 10, 9, 3, 2, 5, 6, 4]
-        self.__sleeptime = 0.5
+        self.__algorithm_dictionary = get_algorithmlist()
+        print(self.__algorithm_dictionary)
+        self.__algorithm = self.__algorithm_dictionary[1][1]
+        self.__list = [1, 11, 14, 15, 19, 8, 7, 10, 16, 17, 9, 3, 2, 5, 12, 18, 6, 4, 20, 13]
+        self.__sleeptime = 0.25
 
     def start(self):
         if self.__gui is not None:
@@ -99,10 +72,6 @@ class MainController:
             self.__sort_control.end()
         self.__list_control = ListController(self.__window, self)
 
-    @staticmethod
-    def __get_a_key(dictionary):
-        for key in dictionary.keys():
-            return key
 
     def __init_window__(self, window=None):
         self.__window = window

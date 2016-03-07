@@ -18,7 +18,7 @@ class ListWindow:
         self.__min_var = IntVar()
         self.__min_var.set(1)
         self.__max_var = IntVar()
-        self.__max_var.set(15)
+        self.__max_var.set(25)
         self.__list_string_var = StringVar()
         self.__list_string_var.set(self.__create_input_from_list(self.__main_controller.get_list()))
 

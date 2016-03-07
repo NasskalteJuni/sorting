@@ -18,9 +18,9 @@ class MainWindow:
         for algorithm in algorithm_dict:
             def __set_algorithm(given_algorithm):
                 def __chose_algorithm():
-                    self.__main_controller.set_algorithm(algorithm_dict[given_algorithm])
+                    self.__main_controller.set_algorithm(given_algorithm[1])
                 return __chose_algorithm
-            dropdown_algorithm_menu.add_command(label=algorithm, command=__set_algorithm(algorithm))
+            dropdown_algorithm_menu.add_command(label=algorithm[0], command=__set_algorithm(algorithm))
         menu.add_cascade(label="algorithms", menu=dropdown_algorithm_menu)
         menu.add_command(label="edit list", command=self.__main_controller.show_lists)
         velocity_menu = Menu(menu, tearoff=0)
