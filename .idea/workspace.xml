@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c13884dd-ada5-4fd6-9e85-fd31f4194857" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sorting_icon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sorting/americanflagsort.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sorting/bitonicsort.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/SortingProcess.py" afterPath="$PROJECT_DIR$/business/SortingProcess.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/MainController.py" afterPath="$PROJECT_DIR$/controller/MainController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sorting/algorithmlist.py" afterPath="$PROJECT_DIR$/sorting/algorithmlist.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/ListGui.py" afterPath="$PROJECT_DIR$/view/ListGui.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/MainGui.py" afterPath="$PROJECT_DIR$/view/MainGui.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/SortingGui.py" afterPath="$PROJECT_DIR$/view/SortingGui.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sorting/whirlpoolsort.py" afterPath="$PROJECT_DIR$/sorting/snailsort.py" />
     </list>
     <ignored path="sorting.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -122,10 +112,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SortingProcess.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SortingProcess.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/business/SortingProcess.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6599327">
+            <state vertical-scroll-proportion="0.0">
               <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -134,14 +124,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SortingGui.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/SortingGui.py">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.08994709">
+              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -199,6 +187,7 @@
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/controller/MainController.py" />
         <option value="$PROJECT_DIR$/business/SortingProcess.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -692,7 +681,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457383438531</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Cleaned up some exceptions, gui is running more smooth, added one or two algorithms">
+      <created>1457609344011</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1457609344011</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -709,6 +704,7 @@
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -718,7 +714,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -755,7 +750,8 @@
     <MESSAGE value="Added some functionality to create lists" />
     <MESSAGE value="Will add function editor in near future..." />
     <MESSAGE value="Cancel the function editor, due to the pickling for multiprocessing this would take again a few days..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cancel the function editor, due to the pickling for multiprocessing this would take again a few days..." />
+    <MESSAGE value="Cleaned up some exceptions, gui is running more smooth, added one or two algorithms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up some exceptions, gui is running more smooth, added one or two algorithms" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -764,13 +760,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/controller/SortingController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/SortingGui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1047,6 +1036,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="136" selection-start-line="0" selection-start-column="136" selection-end-line="0" selection-end-column="136" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1141,11 +1131,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/business/SortingProcess.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6599327">
+        <state vertical-scroll-proportion="0.0">
           <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08994709">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
