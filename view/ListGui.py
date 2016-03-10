@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import BOTH, TOP, IntVar, Frame, StringVar, Spinbox, Button, LEFT, RIGHT, DISABLED, BOTTOM, Entry, X, FLAT, WORD, Text, END
 
 
 class ListWindow:

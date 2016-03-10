@@ -11,6 +11,7 @@ class SortingAnimation:
     __canvas_height = 450
     __interpolate = None
     __bar_dict = None
+    __dict = {}
 
     def __init__(self, window):
         self.__window = window
@@ -29,13 +30,14 @@ class SortingAnimation:
             rectangle_width = self.__canvas_width / len(drawable_list)
             rectangle_height = self.__canvas_height / (max(drawable_list))
             try:
-                self.__canvas.delete("all")
                 for i in range(0, len(drawable_list)):
                     x0 = rectangle_width*i
                     x1 = rectangle_width*i + rectangle_width
                     y0 = self.__canvas_height - (rectangle_height * int(drawable_list[i]))
                     y1 = self.__canvas_height
-                    self.__canvas.create_rectangle(x0, y0, x1, y1, fill=self.__get_bar_color(y0))
+                    if self.__dict.get(x0) is not None:
+                        self.__canvas.delete(self.__dict[x0])
+                    self.__dict[x0] = self.__canvas.create_rectangle(x0, y0, x1, y1, fill=self.__get_bar_color(y0))
             except TclError:
                 print("dirty gui update")
 

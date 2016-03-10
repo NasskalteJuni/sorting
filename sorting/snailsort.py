@@ -1,3 +1,5 @@
+from sorting.insertionsort import insertionsort
+
 # Defined my own sorting algorithm
 # it is worse than bubblesort and gained the title or code EISA (Extremely Inefficient Sorting Algorithm)
 # it was inspired by the process of sorting a deck of cards:
@@ -72,10 +74,11 @@ def __is_not_sorted(unsorted_list):
     return False
 
 
-def whirlpoolsort(unsorted_list) -> list:
+def snailsort(unsorted_list) -> list:
     lower = 0
     upper = 0
-    while __is_not_sorted(unsorted_list):
+    iterations = 0
+    while __is_not_sorted(unsorted_list) and iterations < len(unsorted_list)**2:
         next_index = upper+1
         if __next_is_still_in_list(unsorted_list, next_index):
             # check if the element after the upper end is less than the value of the lower end
@@ -102,3 +105,8 @@ def whirlpoolsort(unsorted_list) -> list:
                 upper = 0
 
             # continue with this
+        iterations += 1
+
+    # quickfix for an of by one error at the end
+    insertionsort(unsorted_list)
+    return unsorted_list

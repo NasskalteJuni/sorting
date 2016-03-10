@@ -1,7 +1,6 @@
 from view.MainGui import MainWindow
 from controller.ListEditController import ListController
 from controller.SortingController import SortingController
-from controller.AlgorithmEditController import AlgorithmController
 from threading import Thread
 from sorting.algorithmlist import get_algorithmlist
 
@@ -17,8 +16,7 @@ class MainController:
     def __init__(self, window):
         self.__init_window__(window)
         self.__algorithm_dictionary = get_algorithmlist()
-        print(self.__algorithm_dictionary)
-        self.__algorithm = self.__algorithm_dictionary[1][1]
+        self.__algorithm = self.__algorithm_dictionary[0][1]
         self.__list = [1, 11, 14, 15, 19, 8, 7, 10, 16, 17, 9, 3, 2, 5, 12, 18, 6, 4, 20, 13]
         self.__sleeptime = 0.25
 
@@ -52,7 +50,6 @@ class MainController:
         self.restart_animation()
 
     def start_animation(self):
-        print("started animation")
         self.__sort_control = SortingController(self.__window, self.__list, self.__algorithm, self.__sleeptime)
         self.__sort_control.start()
 
@@ -65,7 +62,6 @@ class MainController:
         t.start()
 
     def stop_animation(self):
-        print("stopped animation")
         if self.__sort_control is not None:
             self.__sort_control.end()
             self.__sort_control = None

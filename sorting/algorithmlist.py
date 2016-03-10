@@ -13,6 +13,8 @@ from sorting.heapsort import heapsort
 from sorting.selectionsort import selectionsort
 from sorting.slowsort import slowersort
 from sorting.smoothsort import smoothsort
+from sorting.snailsort import snailsort
+from sorting.americanflagsort import american_flag_sort
 
 
 def get_algorithmlist():
@@ -31,7 +33,9 @@ def get_algorithmlist():
         ("cycle sort", cyclesort),
         ("insertion sort", insertionsort),
         ("slow sort", slowersort),
-        ("smooth sort", smoothsort)
+        ("smooth sort", smoothsort),
+        ("snail sort", snailsort),
+        ("american flag sort", american_flag_sort)
     ]
     algorithms.sort(key=lambda tpl: tpl[0])
     return algorithms

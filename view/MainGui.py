@@ -7,6 +7,7 @@ class MainWindow:
         self.__main_controller = main_controller
         self.__main_window = window
         self.__main_window.title("SortingAlgorithms at work")
+        self.__main_window.iconbitmap("sorting_icon.ico")
         self.__main_window.geometry("500x450")
         self.__main_window.resizable(0, 0)
         self.__main_window.configure(bg="#222")
@@ -34,6 +35,9 @@ class MainWindow:
         def set_to_fast():
             self.__main_controller.set_sleeptime(0.05)
         velocity_menu.add_command(label="fast", command=set_to_fast)
+        def set_to_very_fast():
+            self.__main_controller.set_sleeptime(0.01)
+        velocity_menu.add_command(label="very fast", command=set_to_very_fast)
         menu.add_cascade(label="speed", menu=velocity_menu)
         self.__menu = menu
 
