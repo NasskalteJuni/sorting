@@ -7,7 +7,7 @@ class MainWindow:
         self.__main_controller = main_controller
         self.__main_window = window
         self.__main_window.title("SortingAlgorithms at work")
-        self.__main_window.iconbitmap("sorting_icon.ico")
+        #self.__main_window.iconbitmap("../sorting_icon.ico")
         self.__main_window.geometry("500x450")
         self.__main_window.resizable(0, 0)
         self.__main_window.configure(bg="#222")

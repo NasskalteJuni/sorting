@@ -53,7 +53,7 @@ class SortingAnimation:
         rgb[0] *= 255
         rgb[1] *= 255
         rgb[2] *= 255
-        rgb = tuple(rgb)
+        rgb = tuple([int(rgb[0]), int(rgb[1]), int(rgb[2])])
         return '#%02x%02x%02x' % rgb
 
     @staticmethod

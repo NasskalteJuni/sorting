@@ -1,5 +1,7 @@
+#!python3.4
 from distutils.core import setup
 import py2exe, os, sys
+import psutil, multiprocessing
 
 setup(name="sorting",
       version="1.0.1",
@@ -8,5 +10,7 @@ setup(name="sorting",
       author="Nasskalte Juni",
       license="MIT",
       keywords="sorting algorithms visualization",
-      console=["main.py"]
+      requires=["multiprocessing", "psutil"],
+      windows=["main.py"],
+      icon_resources=[(1, "./sorting_icon.ico")]
       )
